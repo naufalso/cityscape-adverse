@@ -181,6 +181,11 @@ class DDRNet(BaseModule):
     def forward(self, x):
         """Forward function."""
         out_size = (x.shape[-2] // 8, x.shape[-1] // 8)
+        # Shortcut Fix - If the output size is not even, add 1 to the output size
+        if out_size[0] % 2 != 0:
+            out_size = (out_size[0] + 1, out_size[1])
+        if out_size[1] % 2 != 0:
+            out_size = (out_size[0], out_size[1] + 1)
 
         # stage 0-2
         x = self.stem(x)
@@ -190,6 +195,7 @@ class DDRNet(BaseModule):
         x_s = self.spatial_branch_layers[0](x)
         comp_c = self.compression_1(self.relu(x_c))
         x_c += self.down_1(self.relu(x_s))
+        # print(comp_c.shape, out_size)
         x_s += resize(
             comp_c,
             size=out_size,
