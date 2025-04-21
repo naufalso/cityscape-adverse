@@ -1,0 +1,4 @@
+transformers
+diffusers["torch"]
+datasets
+huggingface_hub

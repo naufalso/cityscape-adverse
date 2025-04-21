@@ -1,5 +1,5 @@
-ARG PYTORCH="1.11.0"
-ARG CUDA="11.3"
+ARG PYTORCH="2.3.1"
+ARG CUDA="12.1"
 ARG CUDNN="8"
 ARG MMCV="2.0.1"
 
@@ -25,7 +25,7 @@ ARG CUDA
 ARG MMCV
 RUN ["/bin/bash", "-c", "pip install openmim"]
 RUN ["/bin/bash", "-c", "mim install mmengine"]
-RUN ["/bin/bash", "-c", "mim install mmcv==${MMCV}"]
+RUN ["/bin/bash", "-c", "mim install mmcv"]
 
 # Install MMSegmentation
 RUN git clone -b main https://github.com/open-mmlab/mmsegmentation.git /mmsegmentation

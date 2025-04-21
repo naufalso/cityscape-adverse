@@ -256,10 +256,8 @@ class IoUMetric(BaseMetric):
             if metric == 'mIoU':
                 iou = total_area_intersect / total_area_union
                 acc = total_area_intersect / total_area_label
-                ret_metrics['IoU'] = iou
+                ret_metrics['IoU'] = np.nan if np.is_nan(acc) else iou
                 ret_metrics['Acc'] = acc
-                # if Acc is nan, IoU should be nan
-                ret_metrics['IoU'][torch.isnan(acc)] = float('nan')
             elif metric == 'mDice':
                 dice = 2 * total_area_intersect / (
                     total_area_pred_label + total_area_label)
