@@ -27,6 +27,8 @@ from .refuge import REFUGEDataset
 from .stare import STAREDataset
 from .synapse import SynapseDataset
 from .acdc import ACDCDataset
+from .city_appoloscape import CityAppoloScape
+from .city_mappilaryv2 import CityMappilaryV2
 
 # yapf: disable
 from .transforms import (CLAHE, AdjustGamma, Albu, BioMedical3DPad,
@@ -63,5 +65,5 @@ __all__ = [
     'MapillaryDataset_v2', 'Albu', 'LEVIRCDDataset',
     'LoadMultipleRSImageFromFile', 'LoadSingleRSImageFromFile',
     'ConcatCDInput', 'BaseCDDataset', 'DSDLSegDataset', 'BDD100KDataset',
-    'NYUDataset', 'HSIDrive20Dataset', 'ACDCDataset'
+    'NYUDataset', 'HSIDrive20Dataset', 'ACDCDataset', 'CityAppoloScape', 'CityMappilaryV2'
 ]
